@@ -3,7 +3,7 @@ import { readFile, writeFile, stat, mkdir } from 'node:fs/promises'
 import { gzipSync } from 'node:zlib'
 import { join, extname, normalize } from 'node:path'
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 4200
 const dataDirectory = process.env.DATA_DIR || './data'
 const cacheFile = join(dataDirectory, 'spy.json')
 const publicDirectory = new URL('./public/', import.meta.url).pathname
