@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1a1a19">
+  <title>Patterns: SPY trading trainer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="lightweight-charts.standalone.production.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Patterns</h1>
+    <label class="mode">Sampling
+      <select id="mode">
+        <option value="balanced">Balanced</option>
+        <option value="random">Random</option>
+      </select>
+    </label>
+  </header>
+  <p id="stats" class="muted" aria-live="polite"></p>
+
+  <div id="chart" role="img" aria-label="Candlestick chart of the current round"></div>
+  <p id="readout" class="muted"></p>
+
+  <fieldset id="indicators" class="chips">
+    <legend class="visually-hidden">Indicators</legend>
+  </fieldset>
+
+  <form id="trade">
+    <div class="sides" role="radiogroup" aria-label="Trade direction">
+      <label><input type="radio" name="side" value="long" checked><span>Long</span></label>
+      <label><input type="radio" name="side" value="short"><span>Short</span></label>
+      <label><input type="radio" name="side" value="none"><span>No trade</span></label>
+    </div>
+    <div class="levels">
+      <label>Take profit <input id="takeProfit" type="number" step="0.1" inputmode="decimal" required></label>
+      <label>Stop loss <input id="stopLoss" type="number" step="0.1" inputmode="decimal" required></label>
+    </div>
+    <p id="error" class="error" role="alert"></p>
+    <button id="submit" type="submit">Take trade</button>
+  </form>
+
+  <section id="result" hidden aria-live="polite">
+    <div id="summary"></div>
+    <button id="next" type="button">Next round</button>
+  </section>
+</body>
+</html>
